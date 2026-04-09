@@ -1,7 +1,10 @@
 package models;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import sudoku.model.models.SudokuField;
@@ -43,6 +46,16 @@ public class SudokuBaseContainerTest {
 
         assertTrue(row.equals(row));
         assertEquals(row.hashCode(), row.hashCode());
+    }
+
+    @Test
+    void testEquals_DifferentObject_IdenticalRows() {
+        SudokuRow row1 = new SudokuRow();
+        SudokuRow row2 = new SudokuRow();
+
+        assertTrue(row1.equals(row2)); // they are identical, so the equals method returns true
+        // not testing for different hash codes as that need not be true
+        // especially due to the (very) unlikely chance that two different objects have the same hash
     }
 
     @Test
